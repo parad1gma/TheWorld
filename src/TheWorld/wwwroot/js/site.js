@@ -27,11 +27,11 @@
         main.style = "";
     });
 
-    var menuItems = $("ul.menu li a");
-    menuItems.on("click", function () {
-        var me = $(this);
-        alert(me.text());
-    })
+    //var menuItems = $("ul.menu li a");
+    //menuItems.on("click", function () {
+    //    var me = $(this);
+    //    alert(me.text());
+    //})
 
     var $sidebarAndWrapper = $("#sidebar, #wrapper");
 
