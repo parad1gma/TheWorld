@@ -1,62 +1,19 @@
 ﻿@{ 
     ViewBag.Title = "Home Page";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <title>The World - @ViewBag.Title</title>
-    <meta charset="utf-8" />
+<h1>The World</h1>
+<p>This will be fun website soon!</p>
 
-    <!-- CSS dependencies -->
-    <link rel="stylesheet" href="css/site.css" />
-</head>
-
-<body>
-    <div id="sidebar">
-        <img src="img/75px-wikipedia-logo.png" alt="avatar" class="avatar" />
-        <span id="username">Mile Kordic</span>
-        <ul class="menu">
-            <li class="active">
-                <a href="#">Home</a>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
+<form>
+    <div>
+        <label>Date</label>
+        <input />
     </div>
-    <div id="wrapper">
-        <div id="main">
-            <div>
-                <button id="sidebarToggle">Toggle Menu</button>
-            </div>
-
-            <h1>The World</h1>
-            <p>This will be fun website soon!</p>
-
-            <form>
-                <div>
-                    <label>Date</label>
-                    <input />
-                </div>
-                <div>
-                    <label>Location</label>
-                    <input />
-                </div>
-                <div>
-                    <input type="submit" value="Add" />
-                </div>
-            </form>
-
-        </div>
-        <div id="footer">
-            &copy; 2016 The World Ltd.
-        </div>
+    <div>
+        <label>Location</label>
+        <input />
     </div>
-
-    <script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="js/site.js"></script>
-</body>
-</html>
+    <div>
+        <input type="submit" value="Add" />
+    </div>
+</form>
