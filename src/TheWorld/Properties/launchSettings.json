@@ -12,6 +12,7 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
+        "MailSettings__Email": "parad1gma@paradigma.rs",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
