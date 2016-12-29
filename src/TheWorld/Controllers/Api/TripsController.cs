@@ -3,6 +3,7 @@ using TheWorld.Models;
 
 namespace TheWorld.Controllers.Api
 {
+    [Route("/api/trips")]
     public class TripsController : Controller
     {
         private IWorldRepository _repository;
@@ -12,12 +13,18 @@ namespace TheWorld.Controllers.Api
             _repository = repository;
         }
 
-        [HttpGet("api/trips")]
+        [HttpGet]
         public IActionResult Get()
         {
             //if (true) return BadRequest("Bad things happened");
 
             return Ok(_repository.GetAllTrips());
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody]Trip trip)
+        {
+            return Ok(true);
         }
     }
 }
