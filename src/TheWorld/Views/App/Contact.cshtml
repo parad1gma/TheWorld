@@ -12,19 +12,25 @@
             {
                 <div>@ViewBag.UserMessage</div>
             }
-            <label asp-for="Name">Name</label>
-            <input asp-for="Name" type="text" value="" />
-            <span asp-validation-for="Name"></span>
+            <div class="form-group">
+                <label asp-for="Name">Name</label>
+                <input asp-for="Name" type="text" value=""  class="form-control"/>
+                <span asp-validation-for="Name" class="text-muted"></span>
+            </div>
 
-            <label asp-for="Email">Email</label>
-            <input asp-for="Email" type="email" value="" />
-            <span asp-validation-for="Email"></span>
+            <div class="form-group"> 
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" type="email" value="" class="form-control"/>
+                <span asp-validation-for="Email" class="text-muted"></span>
+            </div>
 
-            <label asp-for="Message">Message</label>
-            <textarea cols="40" rows="4" asp-for="Message"></textarea>
-            <span asp-validation-for="Message"></span>
+            <div class="form-group">
+                <label asp-for="Message">Message</label>
+                <textarea cols="40" rows="4" asp-for="Message" class="form-control"></textarea>
+                <span asp-validation-for="Message" class="text-muted"></span>
+            </div>
             <div>
-                <input type="submit" value="Send Message" />
+                <input type="submit" value="Send Message" class="btn btn-success"/>
             </div>
         </form>
     </div>
