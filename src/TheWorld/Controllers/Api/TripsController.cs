@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 using TheWorld.Models;
 using TheWorld.ViewModels;
 
@@ -17,9 +20,18 @@ namespace TheWorld.Controllers.Api
         [HttpGet]
         public IActionResult Get()
         {
-            //if (true) return BadRequest("Bad things happened");
+            try
+            {
+                var result = _repository.GetAllTrips();
 
-            return Ok(_repository.GetAllTrips());
+                return Ok(Mapper.Map<IEnumerable<TripViewModel>>(result));
+            }
+            catch (Exception ex)
+            {
+                // TODO Logging
+
+                return BadRequest("Something wrong has happen");
+            }
         }
 
         [HttpPost]
@@ -27,7 +39,11 @@ namespace TheWorld.Controllers.Api
         {
             if (ModelState.IsValid)
             {
-                return Created($"api/trips/{trip.Name}", trip);
+                // Save to the Database
+                var newTrip = Mapper.Map<Trip>(trip);
+
+                //return Created($"api/trips/{trip.Name}", trip);
+                return Created($"api/trips/{trip.Name}", Mapper.Map<TripViewModel>(newTrip));
             }
 
             return BadRequest(ModelState);
