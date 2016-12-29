@@ -1,5 +1,9 @@
 {
     "MailSettings": {
         "Email": "paradigma@paradigma.rs"
+    },
+    "ConnectionStrings": {
+        "WorldContextConnection": "Server=(localdb)\\MSSQLLocalDb;Database=TheWorldDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
+
     }
 }
