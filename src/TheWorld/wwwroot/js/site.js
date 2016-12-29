@@ -34,7 +34,7 @@
     //})
 
     var $sidebarAndWrapper = $("#sidebar, #wrapper");
-    var $icon = $("#sidebarToggle i.fa")
+    var $icon = $("#sidebarToggle i.fa");
 
     $("#sidebarToggle").on("click", function () {
         $sidebarAndWrapper.toggleClass("hide-sidebar");
