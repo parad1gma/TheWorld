@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections;
 using TheWorld.ViewModels;
 using AutoMapper;
+using TheWorld.Services;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,13 +17,17 @@ namespace TheWorld.Controllers.Api
     [Route("/api/trips/{tripNAme}/stops")]
     public class StopsController : Controller
     {
+        private GeoCoordsService _coordService;
         private ILogger<StopsController> _logger;
         private IWorldRepository _repository;
 
-        public StopsController(IWorldRepository repository, ILogger<StopsController> logger) 
+        public StopsController(IWorldRepository repository, 
+            ILogger<StopsController> logger,
+            GeoCoordsService coordService) 
         {
             _repository = repository;
             _logger = logger;
+            _coordService = coordService;
         }
 
         [HttpGet]
@@ -57,6 +62,17 @@ namespace TheWorld.Controllers.Api
                 {
                     var newStop = Mapper.Map<Stop>(model);
                     // Lookup the Geocodes
+
+                    var result = await _coordService.GetCoordsAsync(newStop.Name);
+                    if (!result.Success)
+                    {
+                        _logger.LogError(result.Message);
+                    }
+                    else
+                    {
+                        newStop.Latitude = result.Latitude;
+                        newStop.Longitude= result.Longitude;
+                    }
 
                     // save to the Database
 
