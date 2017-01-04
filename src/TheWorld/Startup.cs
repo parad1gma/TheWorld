@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -62,11 +63,18 @@ namespace TheWorld
 
             services.AddLogging();
 
-            services.AddMvc()
-                .AddJsonOptions(config =>
-                 {
-                     config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                 });
+            services.AddMvc(config=>
+            {
+                // Make sure ASPNETCORE_ENVIRONMENT=Production
+                if (_env.IsProduction())
+                {
+                    config.Filters.Add(new RequireHttpsAttribute());
+                }
+            })
+            .AddJsonOptions(opt =>
+            {
+                opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
