@@ -38,9 +38,9 @@ namespace TheWorld.Controllers.Web
         {
             try
             {
-                var data = _repository.GetAllTrips();
+                var trips = _repository.GetAllTrips();
 
-                return View(data);
+                return View(trips);
             }
             catch (Exception ex)
             {

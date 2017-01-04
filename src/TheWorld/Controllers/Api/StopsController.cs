@@ -53,7 +53,6 @@ namespace TheWorld.Controllers.Api
         [HttpPost]
         public async Task<IActionResult> Post(string tripName, [FromBody]StopViewModel model)
         {
-
             try
             {
                 // if the model is valid
