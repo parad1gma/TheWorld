@@ -29,7 +29,6 @@
         $http.get("/api/trips")
         .then(function (response) {
             // Success
-            console.log(response);
             angular.copy(response.data, vm.trips);
         }, function (error) {
             // Failure
