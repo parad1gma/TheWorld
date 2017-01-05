@@ -26,15 +26,10 @@
         vm.errorMessage = "";
         vm.isBusy = true;
 
-        vm.addTrip = function () {
-            //alert(vm.newTrip.name);
-            vm.trips.push({ name: vm.newTrip.name, created: new Date() })
-            vm.newTrip = {};
-        };
-
         $http.get("/api/trips")
-        .then(function (response, error) {
+        .then(function (response) {
             // Success
+            console.log(response);
             angular.copy(response.data, vm.trips);
         }, function (error) {
             // Failure
@@ -43,6 +38,27 @@
         .finally(function () {
             vm.isBusy = false;
         });
+
+        vm.addTrip = function () {
+            //vm.trips.push({ name: vm.newTrip.name, created: new Date() })
+            //vm.newTrip = {};
+
+            vm.isBusy = true;
+            vm.errorMessage = "";
+
+            $http.post("/api/trips", vm.newTrip)
+            .then(function (response) {
+                // Success
+                vm.trips.push(response.data);
+                vm.newTrip = {};
+            }, function () {
+                // Fail
+                vm.errorMessage = "Failed to save new trip";
+            })
+            .finally(function () {
+                vm.isBusy = false;
+            });
+        };
     }
 
 })();

@@ -15,7 +15,7 @@
         <table class="table table-responsive table-striped">
             <tr ng-repeat="trip in vm.trips">
                 <td style="vertical-align: middle">{{ trip.name }}</td>
-                <td style="vertical-align: middle">{{ trip.created | date: "d.MMM.yyyy" }}</td>
+                <td style="vertical-align: middle">{{ trip.dateCreated | date: "d.MMM.yyyy" }}</td>
                 <td><a href="#" class="btn btn-sm btn-primary">Manage</a></td>
             </tr>
         </table>
