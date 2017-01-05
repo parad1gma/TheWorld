@@ -17,8 +17,8 @@ namespace TheWorld.Controllers.Web
         private IWorldRepository _repository;
         private ILogger<AppController> _logger;
 
-        public AppController(IMailService mailService, 
-            IConfigurationRoot config, 
+        public AppController(IMailService mailService,
+            IConfigurationRoot config,
             IWorldRepository repository,
             ILogger<AppController> logger)
         {
