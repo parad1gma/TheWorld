@@ -9,12 +9,14 @@ using System.Collections;
 using TheWorld.ViewModels;
 using AutoMapper;
 using TheWorld.Services;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TheWorld.Controllers.Api
 {
-    [Route("/api/trips/{tripNAme}/stops")]
+    [Authorize]
+    [Route("/api/trips/{tripName}/stops")]
     public class StopsController : Controller
     {
         private GeoCoordsService _coordService;
@@ -36,7 +38,8 @@ namespace TheWorld.Controllers.Api
 
             try
             {
-                var trip = _repository.GetTripByName(tripName);
+                //var trip = _repository.GetTripByName(tripName);
+                var trip = _repository.GetUserTripByName(tripName, User.Identity.Name);
 
                 return Ok(Mapper.Map<IEnumerable<StopViewModel>>(trip.Stops.OrderBy(s => s.Order).ToList()));
             }
@@ -75,7 +78,7 @@ namespace TheWorld.Controllers.Api
 
                     // save to the Database
 
-                    _repository.AddStop(tripName, newStop);
+                    _repository.AddStop(tripName, newStop, User.Identity.Name);
 
                     if (await _repository.SaveChangesAsync())
                     {
