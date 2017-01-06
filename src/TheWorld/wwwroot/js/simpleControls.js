@@ -3,7 +3,7 @@
     "use strict";
 
     angular.module("simpleControls", [])
-    .directive("waitCursor", waitCursor);
+        .directive("waitCursor", waitCursor);
 
     function waitCursor() {
         return {
