@@ -60,6 +60,7 @@
             @foreach (var item in Model)
             {
                 <li>@item.Name : @item.DateCreated.ToString("d")</li>
+
             }
         </ul>
     </div>
@@ -67,7 +68,6 @@
 
 @section scripts {
     <script src="~/lib/angular/angular.min.js"></script>
-    <script src="~/lib/angular-route/angular-route.min.js"></script>
     <script src="~/js/simpleControls.js"></script>
     <script src="~/js/app-trips.js"></script>
     <script src="~/js/tripsController.js"></script>

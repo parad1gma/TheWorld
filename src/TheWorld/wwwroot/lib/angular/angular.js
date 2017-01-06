@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.2-build.5229+sha.c00903b
+ * @license AngularJS v1.6.2-build.5227+sha.e193cda
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.2-build.5229+sha.c00903b/' +
+    message += '\nhttp://errors.angularjs.org/1.6.2-build.5227+sha.e193cda/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2627,7 +2627,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.2-build.5229+sha.c00903b',
+  full: '1.6.2-build.5227+sha.e193cda',
   major: 1,
   minor: 6,
   dot: 2,
@@ -12552,8 +12552,9 @@ function $InterpolateProvider() {
     if (value) {
       startSymbol = value;
       return this;
+    } else {
+      return startSymbol;
     }
-    return startSymbol;
   };
 
   /**
@@ -12569,8 +12570,9 @@ function $InterpolateProvider() {
     if (value) {
       endSymbol = value;
       return this;
+    } else {
+      return endSymbol;
     }
-    return endSymbol;
   };
 
 
@@ -14235,7 +14237,7 @@ function $LogProvider() {
   this.debugEnabled = function(flag) {
     if (isDefined(flag)) {
       debug = flag;
-      return this;
+    return this;
     } else {
       return debug;
     }
