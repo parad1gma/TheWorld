@@ -8,11 +8,11 @@
     .config(function ($routeProvider) {
         $routeProvider.when("/", {
             controller: "tripsController",
-            controllerAs: vm,
+            controllerAs: "vm",
             templateUrl: "/views/tripsView.html"
         });
 
-        $routeProvider.otherwise({ redirectTo: "/"});
+        $routeProvider.otherwise({ redirectTo: "/" });
     });
 
 })();
